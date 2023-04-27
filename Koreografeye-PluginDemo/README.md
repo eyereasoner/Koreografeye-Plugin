@@ -60,7 +60,7 @@ File `config.jsonld`
 {
   "@context": [
     "https://linkedsoftwaredependencies.org/bundles/npm/componentsjs/^5.0.0/components/context.jsonld",
-    "https://linkedsoftwaredependencies.org/bundles/npm/koreografeyeplugindemo/^1.0.0/components/context.jsonld"
+    "https://linkedsoftwaredependencies.org/bundles/npm/koreografeye-plugindemo/^1.0.0/components/context.jsonld"
   ],
   "@id": "http://example.org/myDemo",
   "@type": "MyDemoPlugin",
