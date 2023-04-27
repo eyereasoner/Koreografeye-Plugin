@@ -1,0 +1,17 @@
+@prefix ex:   <http://example.org/> .
+@prefix as:   <https://www.w3.org/ns/activitystreams#> .
+@prefix pol:  <https://www.example.org/ns/policy#> .
+@prefix fno:  <https://w3id.org/function/ontology#> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+
+{
+  ?id a as:Update .
+}
+=>
+{
+  ex:MyEmailPolicy pol:policy [
+      a fno:Execution ;
+      fno:executes ex:sendNtfy ;
+      ex:message "You have a new update!" ;
+  ] .
+}.
