@@ -1,0 +1,31 @@
+{
+  "name": "koreografeye-plugindemo",
+  "version": "1.0.0",
+  "lsd:module": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "author": "Patrick Hochstenbach <Patrick.Hochstenbach@UGent.be>",
+  "files": [
+    "components",
+    "dist/**/*.d.ts",
+    "dist/**/*.js",
+    "dist/**/*.js.map"
+  ],
+  "scripts": {
+    "build": "npm run build:ts && npm run build:components",
+    "build:ts": "tsc",
+    "build:components": "componentsjs-generator -s dist -r kgd1234",
+    "prepare": "npm run build",
+    "demo": "node dist/demo.js"
+  },
+  "dependencies": {
+    "componentsjs": "^5.3.2",
+    "koreografeye": "^0.2.2"
+  },
+  "devDependencies": {
+    "@types/n3": "^1.10.4",
+    "componentsjs-generator": "^3.1.0",
+    "typescript": "^5.0.2"
+  }
+}

@@ -1,0 +1,7 @@
+@prefix : <urn:example:> .
+@prefix as: <https://www.w3.org/ns/activitystreams#> .
+
+<urn:uuid:C7A19613-4CE5-429B-B9D8-84DA391DAC98> 
+    a as:Update ;
+    as:actor <https://patrickhochstenbach.net> ;
+    as:object <https://patrickhochstenbach.net/test/koreografeye/demo.ttl> .

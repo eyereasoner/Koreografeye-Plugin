@@ -1,0 +1,31 @@
+{
+  "@context": [
+    "https://linkedsoftwaredependencies.org/bundles/npm/componentsjs/^5.0.0/components/context.jsonld",
+    "https://linkedsoftwaredependencies.org/bundles/npm/koreografeye/^0.0.0/components/context.jsonld",
+    "https://linkedsoftwaredependencies.org/bundles/npm/koreografeye-solid/^0.0.0/components/context.jsonld"
+  ],
+  "@graph": [
+    {
+      "@id": "urn:koreografeye:reasonerInstance",
+      "@type": "EyeJsReasoner",
+      "args": [ 
+        "--quiet" , 
+        "--nope" , 
+        "--pass"
+      ]
+    },
+    {
+      "@id": "http://example.org/sendToSolid",
+      "@type": "SolidPlugin",
+      "authenticator": {
+          "@type": "SolidCSSAuthenticator",
+          "options": {
+            "@type": "@json",
+            "@value": {
+              "token" : "./mytoken"
+            }
+          }
+      }
+    }
+  ]
+}
