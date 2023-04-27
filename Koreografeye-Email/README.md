@@ -20,7 +20,9 @@ Add the plugin definition:
   "@type": "SendEmailPlugin",
   "host": "mail.gmx.com",
   "port": 465,
-  "secure": true
+  "secure": true,
+  "user": "yourusername",
+  "password": "********"
 }
 ```
 
@@ -51,6 +53,3 @@ this plugin. An example N3 rule file is provided below:
   ] .
 }.
 ```
-
-To execute the plugin an EMAIL_USERNAME and EMAIL_PASSWORD environment variable
-needs to be set.
