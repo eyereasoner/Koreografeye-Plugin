@@ -1,79 +1,56 @@
-# KoreografeyePluginDemo
+# Koreografeye Email plugin
 
-A demonstration project how to create a Koreografeye plugin.
+An plugin to send an email to an address.
 
-## Install dependencies
-
-```
-npm install 
-```
-
-## Mark your project as a Components.js module
-
-File `package.json`:
+## Install
 
 ```
-{
-  "name": "koreografeyeplugindemo",
-  "version": "1.0.0",
-  "lsd:module": true,
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "components",
-    "dist/**/*.d.ts",
-    "dist/**/*.js",
-    "dist/**/*.js.map"
-  ],
-  "scripts": {
-    "build": "npm run build:ts && npm run build:components",
-    "build:ts": "tsc",
-    "build:components": "componentsjs-generator -s dist -r kgd1234",
-    "prepare": "npm run build",
-  },
-  ...
-}
+npm install koreografeye-email
 ```
 
-- Make sure that the `-r` option of `build:components` has a unique id for your project (invent some code)
+Change the config.jsonld configuration file and add the plugin definition.
 
-## Create a plugin
+In `@context` add `"https://linkedsoftwaredependencies.org/bundles/npm/koreografeye-email/^1.0.0/components/context.jsonld"`.
 
-In `src` create a class as extension of `PolicyPlugin` from 
-the Koreografeye package. The file `src/MyDemoPlugin.ts` is an example of a such a plugin.
-
-## Create an index with all exported plugin modules
-
-In `src/index.ts` export all the plugins you created.
-
-## Compile
-
-```
-npm run build
-```
-
-## Create a configuration file for your class
-
-File `config.jsonld`
+Add the plugin definition:
 
 ```
 {
-  "@context": [
-    "https://linkedsoftwaredependencies.org/bundles/npm/componentsjs/^5.0.0/components/context.jsonld",
-    "https://linkedsoftwaredependencies.org/bundles/npm/koreografeyeplugindemo/^1.0.0/components/context.jsonld"
-  ],
-  "@id": "http://example.org/myDemo",
-  "@type": "MyDemoPlugin",
-  "name": "Test Name"
+  "@id": "http://example.org/sendEmail",
+  "@type": "SendEmailPlugin",
+  "host": "mail.gmx.com",
+  "port": 465,
+  "secure": true
 }
 ```
 
-- this file is required for testing
-- use the package name in the `@context` and round the version number to the lowest main version (e.g. not `1.2.3` but `1.0.0`)
-- `@id` must contain the URI of the `fno:executes` policy that is used in RDF policies
+## Usage
 
-## Run the demo
+The Koreografeye N3 rules should produce a `ex:sendEmail` policy to trigger
+this plugin. An example N3 rule file is provided below:
 
 ```
-npm run demo
+@prefix ex:   <http://example.org/> .
+@prefix as:   <https://www.w3.org/ns/activitystreams#> .
+@prefix pol:  <https://www.example.org/ns/policy#> .
+@prefix fno:  <https://w3id.org/function/ontology#> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+
+{
+  ?id a as:Update .
+}
+=>
+{
+  ex:MyEmailPolicy pol:policy [
+      a fno:Execution ;
+      fno:executes ex:sendEmail ;
+      ex:to "patrick.hochstenbach@gmail.com" ;
+      ex:from "patrick_hochstenbach@gmx.net" ;
+      ex:subject "A new resource was created!" ;
+      ex:body "You got a new notification"
+  ] .
+}.
 ```
+
+To execute the plugin an EMAIL_USERNAME and EMAIL_PASSWORD environment variable
+needs to be set.

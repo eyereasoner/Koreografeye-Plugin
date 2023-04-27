@@ -1,1 +1,1 @@
-export * from "./MyDemoPlugin";
+export * from "./SendEmailPlugin";
