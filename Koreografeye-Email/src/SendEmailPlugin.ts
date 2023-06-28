@@ -37,24 +37,26 @@ export class SendEmailPlugin extends PolicyPlugin {
         const transport = nodemailer.createTransport(transportParam);
 
         return new Promise<boolean>( (resolve, reject) => { 
-            const to      = policy.args['http://example.org/to']?.value;
-            const from    = policy.args['http://example.org/from']?.value;
-            const subject = policy.args['http://example.org/subject']?.value;
-            const body    = policy.args['http://example.org/body']?.value;
+            const to      = policy.args['http://example.org/to'];
+            const from    = policy.args['http://example.org/from'];
+            const subject = policy.args['http://example.org/subject'];
+            const body    = policy.args['http://example.org/body'];
 
-            if (to && from && subject && body) {
-                console.log(`Sending to (${to}), from (${from}) with subject (${subject})`);
-            }
-            else {
+            if (! to || ! from || ! subject || ! body) {
                 console.error('Need a to, from, subject and body');
-                return reject(false);
+                return reject(false); 
             }
+
+            const theTo      = to[0].value;
+            const theFrom    = from[0].value;
+            const theSubject = subject[0].value;
+            const theBody    = body[0].value;
 
             const mailOptions = {
-                from: from,
-                to: to,
-                subject: subject,
-                text: body
+                from: theFrom,
+                to: theTo,
+                subject: theSubject,
+                text: theBody
             };
 
             transport.sendMail(mailOptions, (err: any, info: any) => {

@@ -24,12 +24,12 @@ export class MastodonPlugin extends PolicyPlugin {
     public async execute (_mainStore: N3.Store, _policyStore: N3.Store, policy: IPolicyType) : Promise<boolean> {
         this.logger.info('start');
 
-        const bl   = policy.args['http://example.org/baseurl']?.value;
-        const toot = policy.args['http://example.org/toot']?.value;
+        const bl   = policy.args['http://example.org/baseurl'];
+        const toot = policy.args['http://example.org/toot'];
         const accessToken = process.env.MASTODON_ACCESS_TOKEN;
 
         if (bl) {
-            this.baseurl = bl;
+            this.baseurl = bl[0].value;
         }
 
         if (accessToken === undefined) {
@@ -48,7 +48,7 @@ export class MastodonPlugin extends PolicyPlugin {
         }
 
         this.logger.info(`sending toot to ${this.baseurl}`);
-        this.logger.info(toot);
+        this.logger.info(toot[0].value);
 
         if (this.test) {
             this.logger.info(`only a test skipping processing`);
@@ -59,7 +59,7 @@ export class MastodonPlugin extends PolicyPlugin {
 
         try {
             const client = generator('mastodon', this.baseurl, accessToken);
-            result = await this.postToot(client,toot);
+            result = await this.postToot(client,toot[0].value);
         }
         catch(e) {
             this.logger.error(`failed to send data to ${this.baseurl}`);

@@ -3,3 +3,4 @@ dist/**
 components/**
 out/**
 config-demo.jsonld
+.nvmrc
