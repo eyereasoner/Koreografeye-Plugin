@@ -37,8 +37,8 @@ export class SolidPlugin extends PolicyPlugin {
          */
         this.logger.info('start');
 
-        const endpoint = policy.args['http://example.org/endpoint']?.value;
-        const method   = policy.args['http://example.org/method']?.value;
+        const endpoint = policy.args['http://example.org/endpoint'];
+        const method   = policy.args['http://example.org/method'];
         const body     = policy.args['http://example.org/body'];
 
         if (endpoint === undefined) {
@@ -56,19 +56,19 @@ export class SolidPlugin extends PolicyPlugin {
             return false;
         }
 
-        const bodyStore = extractGraph(mainStore,body);
+        const bodyStore = extractGraph(mainStore,body[0]);
 
         if (bodyStore.size) {
             this.logger.debug(`found ${bodyStore.size} triples`);
         }
         else {
-            this.logger.error(`no triples found for ${body.value} in mainStore`);
+            this.logger.error(`no triples found for ${body[0].value} in mainStore`);
             return false;
         }
 
         const bodyRdf = await rdfTransformStore(bodyStore, 'text/turtle');
 
-        this.logger.info(`sending body to ${endpoint} with a ${method}`);
+        this.logger.info(`sending body to ${endpoint[0].value} with a ${method}`);
         this.logger.debug(bodyRdf);
 
         let result : boolean = false;
@@ -83,13 +83,13 @@ export class SolidPlugin extends PolicyPlugin {
 
         try {
             const client = new SolidClient(this.authenticator);
-            result = await client.writeTextToResource(endpoint, bodyRdf, {
+            result = await client.writeTextToResource(endpoint[0].value, bodyRdf, {
                 'format': 'text/turtle',
-                'method': method 
+                'method': method[0].value 
             });
         }
         catch(e) {
-            this.logger.error(`failed to send data to ${endpoint}`);
+            this.logger.error(`failed to send data to ${endpoint[0].value}`);
             this.logger.error(e);
             result = false;
         }

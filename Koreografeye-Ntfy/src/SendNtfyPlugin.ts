@@ -13,10 +13,10 @@ export class SendNtfyPlugin extends PolicyPlugin {
     public async execute(_1: N3.Store, _2: N3.Store, policy: IPolicyType) : Promise<boolean> {
 
         return new Promise<boolean>( async (resolve, reject) => { 
-            const message = policy.args['http://example.org/message']?.value;
+            const message = policy.args['http://example.org/message'];
 
             if (message) {
-                console.log(`Sending to (${this.topic}) : ${message}`);
+                console.log(`Sending to (${this.topic}) : ${message[0].value}`);
             }
             else {
                 console.error('Need a to message');
@@ -25,7 +25,7 @@ export class SendNtfyPlugin extends PolicyPlugin {
 
             const result = await fetch(`https://ntfy.sh/${this.topic}`, {
                 method: 'POST', // PUT works too
-                body: message
+                body: message[0].value
             });
 
             if (result.ok) {

@@ -66,13 +66,13 @@ Mastodon `Preferences > Development > New Application`.
 ### Install dependencies
 
 ```
-npm install 
+yarn
 ```
 
 ### Build
 
 ```
-npm run build
+yarn build
 ```
 
 ### Demo
@@ -99,7 +99,7 @@ Change in `config.jsonld` the `test` parameter to false:
 Run an orchestrator run on `in/demo.ttl` using the `rules/demo.n3` N3 policy rules:
 
 ```
-npm run orch
+yarn orch
 ```
 
 This should create a new `out/demo.ttl` file with the required N3 policies included.
@@ -107,7 +107,7 @@ This should create a new `out/demo.ttl` file with the required N3 policies inclu
 Run the policy executor
 
 ```
-npm run pol
+yarn pol
 ```
 
 The policy executor should have send a toot to your account (see `rules/demo.n3` how 

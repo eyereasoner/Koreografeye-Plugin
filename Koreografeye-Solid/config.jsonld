@@ -2,7 +2,7 @@
   "@context": [
     "https://linkedsoftwaredependencies.org/bundles/npm/componentsjs/^5.0.0/components/context.jsonld",
     "https://linkedsoftwaredependencies.org/bundles/npm/koreografeye/^0.0.0/components/context.jsonld",
-    "https://linkedsoftwaredependencies.org/bundles/npm/koreografeye-solid/^0.0.0/components/context.jsonld"
+    "https://linkedsoftwaredependencies.org/bundles/npm/koreografeye-solid/^1.0.0/components/context.jsonld"
   ],
   "@graph": [
     {

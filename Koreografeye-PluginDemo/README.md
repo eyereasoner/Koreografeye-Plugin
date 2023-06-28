@@ -5,7 +5,7 @@ A demonstration project how to create a Koreografeye plugin.
 ## Install dependencies
 
 ```
-npm install 
+yarn
 ```
 
 ## Mark your project as a Components.js module
@@ -49,7 +49,7 @@ In `src/index.ts` export all the plugins you created.
 ## Compile
 
 ```
-npm run build
+yarn build
 ```
 
 ## Create a configuration file for your class
@@ -75,5 +75,5 @@ File `config.jsonld`
 ## Run the demo
 
 ```
-npm run demo
+yarn demo
 ```

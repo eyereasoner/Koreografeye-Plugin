@@ -87,13 +87,13 @@ The plugin requires three parameters:
 ### Install dependencies
 
 ```
-npm install 
+yarn 
 ```
 
 ### Build
 
 ```
-npm run build
+yarn build
 ```
 
 ### Demo
@@ -103,7 +103,7 @@ Update `rules/demo.n3` and change `endpoint` to a (world) writable resource.
 Run an orchestrator run on `in/demo.ttl` using the `rules/demo.n3` N3 policy rules:
 
 ```
-npm run orch
+yarn orch
 ```
 
 This should create a new `out/demo.ttl` file with the required N3 policies included.
@@ -111,7 +111,7 @@ This should create a new `out/demo.ttl` file with the required N3 policies inclu
 Run the policy executor
 
 ```
-npm run pol
+yarn pol
 ```
 
 The policy executor should have updated the remote resource.

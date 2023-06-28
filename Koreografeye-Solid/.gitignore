@@ -3,3 +3,5 @@ dist/**
 components/**
 out/**
 mytoken
+.nvmrc
+yarn.lock

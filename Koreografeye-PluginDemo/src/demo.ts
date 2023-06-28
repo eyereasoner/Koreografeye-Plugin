@@ -20,8 +20,7 @@ async function run() {
         policy: 'urn:policy:1234',
         target: 'http://example.org/myDemoService',
         args: {},
-        mainSubject: 'urn:uuid:42D2F3DC-0770-4F47-BF37-4F01E0382E32',
-        origin: './in/demo.ttl'
+        order: 1
     };
 
     await plugin.execute(store1,store2,policy);
