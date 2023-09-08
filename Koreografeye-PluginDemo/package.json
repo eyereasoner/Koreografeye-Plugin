@@ -1,11 +1,15 @@
 {
   "name": "koreografeye-plugindemo",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "lsd:module": true,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "MIT",
   "author": "Patrick Hochstenbach <Patrick.Hochstenbach@UGent.be>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eyereasoner/Koreografeye-Plugin.git"
+  },
   "files": [
     "components",
     "dist/**/*.d.ts",
