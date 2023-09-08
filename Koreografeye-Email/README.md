@@ -1,11 +1,11 @@
 # Koreografeye Email plugin
 
-An plugin to send an email to an address.
+A Koreografeye plugin to send an email to an address.
 
 ## Install
 
 ```
-npm install koreografeye-email
+yarn add koreografeye-email
 ```
 
 Change the config.jsonld configuration file and add the plugin definition.
@@ -53,3 +53,20 @@ this plugin. An example N3 rule file is provided below:
   ] .
 }.
 ```
+
+## Demo
+
+When installing the source code from the https://github.com/eyereasoner/Koreografeye-Plugin 
+one can run an email demo using the code example below:
+
+```
+# Run an orchestrator on the in/demo.ttl with rules/demo.n3
+yarn orch
+# Execute the resulting policy
+yarn pol
+```
+
+where 
+
+- `in/demo.ttl` is a demonstration [Event Notification](https://www.eventnotifications.net)
+- `rules/demo.n3` is a demonstration rule that defined what to do with the notification 

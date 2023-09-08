@@ -19,7 +19,9 @@
       "@type": "SendEmailPlugin",
       "host": "mail.gmx.com",
       "port": 465,
-      "secure": true
+      "secure": true,
+      "user": "yourusername",
+      "password": "yourpassword"
     }
   ]
 }
